@@ -1,8 +1,8 @@
 // Home.js
 import React from "react";
-import Login from "./Login";
-import ServiceSection from "./ServiceSection";
-import StartPage from "./StartPage";
+import Login from "./element/Login";
+import ServiceSection from "./element/ServiceSection";
+import StartPage from "./element/StartPage";
 import { useNavigate } from "react-router-dom";
 
 const User = {

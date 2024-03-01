@@ -1,26 +1,41 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import Login from "../Login";
+import React, { useEffect, useState } from "react";
+import Login from "../element/Login";
 
-const User = {
-  studentId: "2023216119",
-  pw: "0423",
-};
+// const User = {
+//   studentId: "2023216119",
+//   pw: "0423",
+// };
 
 const LoginPage = () => {
-  const navigate = useNavigate();
+  const Students = (props) => {
+    const [studentsData, setStudentsData] = useState([]);
 
-  const handleLogin = (studentId, pw) => {
-    if (studentId === User.studentId && pw === User.pw) {
-      navigate("/matching");
-    } else {
-      alert("등록되지 않은 회원입니다.");
-    }
+    const callApi = async () => {
+      const response = await fetch("/api/students");
+      const body = await response.json();
+      console.log(body);
+      return body;
+    };
+
+    useEffect(() => {
+      callApi().then((data) => setStudentsData(data));
+    }, []);
+    console.log(studentsData);
   };
 
-  const handleRegister = () => {
-    navigate("/signup");
-  };
+  // const navigate = useNavigate();
+
+  // const handleLogin = (studentId, pw) => {
+  //   if (studentId === User.studentId && pw === User.pw) {
+  //     navigate("/matching");
+  //   } else {
+  //     alert("등록되지 않은 회원입니다.");
+  //   }
+  // };
+
+  // const handleRegister = () => {
+  //   navigate("/signup");
+  // };
   return (
     <section className="page-section" id="contact">
       <div className="container">
@@ -31,7 +46,7 @@ const LoginPage = () => {
 
         <form id="contactForm" data-sb-form-api-token="API_TOKEN">
           <div className="row align-items-center mb-5 justify-content-center">
-            <Login onLogin={handleLogin} onRegister={handleRegister} />
+            <Login /*onLogin={handleLogin} onRegister={handleRegister}*/ />
           </div>
         </form>
       </div>
