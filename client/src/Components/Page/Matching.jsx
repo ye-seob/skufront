@@ -8,9 +8,6 @@ const Matching = () => {
   // 서버에서 데이터를 가져오는 함수
   const callApi = async () => {
     try {
-      // 실제로 서버에서 데이터를 가져오는 API 호출을 수행해야 합니다.
-      // 예를 들면, axios 또는 fetch를 사용하여 데이터를 가져올 수 있습니다.
-      // 아래는 가상의 데이터를 사용한 예시입니다.
       const response = await fetch("/api/students");
       const data = await response.json();
 
@@ -42,7 +39,8 @@ const Matching = () => {
               {userData[0].뻔선 && userData[0].뻔선.이름}
             </div>
             <div className="numBox">
-              {userData[0].뻔선 && `${userData[0].뻔선.학번}학번`}
+              {userData[0].뻔선 &&
+                `${userData[0].뻔선.학번.substring(2, 4)}학번`}
             </div>
           </div>
           <div className="white-box-S d-flex flex-column align-items-center justify-content-center">
@@ -53,7 +51,8 @@ const Matching = () => {
               {userData[0].뻔후 && userData[0].뻔후.이름}
             </div>
             <div className="numBox">
-              {userData[0].뻔후 && `${userData[0].뻔후.학번}학번`}
+              {userData[0].뻔후 &&
+                `${userData[0].뻔후.학번.substring(2, 4)}학번`}
             </div>
           </div>
         </div>
